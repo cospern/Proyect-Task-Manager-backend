@@ -14,18 +14,10 @@ dotenv.config();
 conectarDB();
 
 // Configurar CORS
-const whitelist = ["https://coruscating-seahorse-967599.netlify.app/"];
+const whitelist = [process.env.FRONTEND_URL];
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.includes(origin)) {
-      // Puede consultar la API
-      callback(null, true);
-    } else {
-      // No esta permitido
-      callback(new Error("Error de Cors"));
-    }
-  },
+  origin: "*",
 };
 
 app.use(cors(corsOptions));
@@ -46,7 +38,7 @@ import { Server } from "socket.io";
 const io = new Server(servidor, {
   pingTimeout: 60000,
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: "*",
   },
 });
 
