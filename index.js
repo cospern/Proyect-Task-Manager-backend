@@ -26,7 +26,6 @@ const corsOptions = {
       callback(new Error("Error de Cors"));
     }
   },
-  origin: "https://proyect-task-manager-frontend-rcx6axl2s.vercel.app"
 };
 
 app.use(cors(corsOptions));
